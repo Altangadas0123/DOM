@@ -5,9 +5,78 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Stopwatch</title>
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <script src="index.js" defer></script>
   </head>
 
-  <body>
-    Stopwatch
+  <body class="min-h-screen min-w-[1000px] bg-[#101714] font-sans text-[#f0fdf4]">
+    <div class="mx-auto flex min-h-screen w-[920px] flex-col">
+      <header class="flex h-24 shrink-0 items-center justify-between border-b border-[#c5d9bd]/10">
+        <nav>
+          <a
+            href="../index.html"
+            class="inline-flex items-center gap-2 rounded-full border border-[#c5d9bd]/15 bg-white/5 px-4 py-2.5 text-xs font-medium text-[#c5d9bd] transition-colors hover:border-[#c5d9bd]/35 hover:bg-[#c5d9bd]/10 hover:text-[#f0fdf4] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#c5d9bd] motion-reduce:transition-none"
+          >
+            <svg
+              width="15"
+              height="15"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.7"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d="M19 12H5m7-7-7 7 7 7" />
+            </svg>
+            Back to projects
+          </a>
+        </nav>
+        <span class="text-[10px] font-medium uppercase tracking-[2.5px] text-[#c5d9bd]/65">The everyday collection / 04</span>
+      </header>
+      
+<div class="flex flex-1 items-center justify-center py-10">
+        <main class="flex flex-col w-[620px] h-[551px] rounded-[28px] border border-[#FFFFFF26] p-[40px] bg-[#19231E8C]">
+
+          <div class="flex items-center justify-between w-[540px] h-[44px] mb-[26px]">
+            <div class="flex items-center justify-center w-[44px] h-[44px] rounded-xl bg-[#B5CBB21A]"></div>
+            <div class="w-[62px] h-[29px] rounded-[99px] border border-[#C5D9BD26] py-[6px] px-[12px] bg-[#B5CBB20D] font-medium text-xs text-[#C5D9BD]">Ready</div>
+          </div>
+
+          <h1 class="w-[195px] h-[60px] font-normal text-[40px] tracking-[-1px] text-[#F0FDF4] mb-[8px]">Stopwatch</h1>
+
+          <p class="w-[188px] h-[17px] font-normal text-sm text-[#A4B9AD] mb-[36px]">Make time for what matters.</p>
+
+          <!-- <div class="w-[540px] h-[1px] bg-[#B5CBB226] mb-[36px]"></div> -->
+          
+          <div class="flex w-[540px] h-[158px] py-[36px] mb-[36px] border-t border-b border-[#B5CBB226]">
+            <div class="flex flex-col items-center w-[166.67px] h-[86px] gap-[16px]">
+              <div>00</div>
+              <div>HOURS</div>
+            </div>
+            <div class="w-[20px] h-[56px]">:</div>
+            <div class="flex flex-col items-center w-[166.67px] h-[86px] gap-[16px]">
+              <div>00</div>
+              <div>MINUTES</div>
+            </div>
+            <div class="w-[20px] h-[56px]">:</div>
+            <div class="flex flex-col items-center w-[166.67px] h-[86px] gap-[16px]">
+              <div>00</div>
+              <div>SECONDS</div>
+            </div>
+          </div>
+
+          <!-- <div class="w-[540px] h-[1px] bg-[#B5CBB226] mb-[32px]"></div> -->
+
+          <div>
+            <div>Start</div>
+            <div>Pause</div>
+            <div>Reset</div>
+          </div>
+
+          <p>A moment of focus. At your own pace.</p>
+
+        </main>
+      </div>
+    </div>
   </body>
-</html>
+</html> 
