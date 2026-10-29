@@ -35,46 +35,86 @@
       </header>
       
 <div class="flex flex-1 items-center justify-center py-10">
-        <main class="flex flex-col w-[620px] h-[551px] rounded-[28px] border border-[#FFFFFF26] p-[40px] bg-[#19231E8C]">
+        <!-- Endees ehel -->
+        <main class="flex h-[551px] w-[620px] flex-col overflow-clip rounded-[28px] border border-white/15 bg-[#19231e]/55 p-10">
 
-          <div class="flex items-center justify-between w-[540px] h-[44px] mb-[26px]">
-            <div class="flex items-center justify-center w-[44px] h-[44px] rounded-xl bg-[#B5CBB21A]"></div>
-            <div class="w-[62px] h-[29px] rounded-[99px] border border-[#C5D9BD26] py-[6px] px-[12px] bg-[#B5CBB20D] font-medium text-xs text-[#C5D9BD]">Ready</div>
+
+          <div class="mb-7 flex h-11 w-full shrink-0 items-start justify-between">
+            <div class="flex size-11 items-center justify-center rounded-xl bg-[#b5cbb2]/10">
+              <svg
+                width="23"
+                height="23"
+                viewBox="0 0 23 23"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+                class="shrink-0"
+                aria-hidden="true">
+                <path
+                  transform="translate(3.02 4.94)"
+                  d="M16.1478 8.48136C16.1478 12.7155 12.7153 16.148 8.48112 16.148C4.24694 16.148 0.814453 12.7155 0.814453 8.48136C0.814453 4.24718 4.24694 0.814697 8.48112 0.814697C12.7153 0.814697 16.1478 4.24718 16.1478 8.48136Z"
+                  stroke="#C5D9BD"
+                  stroke-width="1.62917"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"/>
+                <path
+                  transform="translate(7.82 1.11)"
+                  d="M3.68945 8.48136V12.3147L5.60612 14.2314M0.814453 0.814697H3.68945M3.68945 0.814697H6.56445M3.68945 0.814697V4.64803M9.43945 5.60636L11.3561 3.6897"
+                  stroke="#C5D9BD"
+                  stroke-width="1.62917"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <div
+              id="status"
+              role="status"
+              aria-live="polite"
+              class="rounded-full border border-[#c5d9bd]/15 bg-[#b5cbb2]/5 px-3 py-1.5 text-xs font-medium leading-[15px] text-[#c5d9bd]">Ready</div>
           </div>
+ 
+          <h1 class="text-[40px] font-normal leading-[60px] tracking-[-1px] text-[#f0fdf4]">Stopwatch</h1>
+          <p class="mt-2 text-sm font-normal leading-[17px] text-[#a4b9ad]">Make time for what matters.</p>
+ 
 
-          <h1 class="w-[195px] h-[60px] font-normal text-[40px] tracking-[-1px] text-[#F0FDF4] mb-[8px]">Stopwatch</h1>
+          <div class="mt-9 border-y border-[#b5cbb2]/15 py-9" role="timer" aria-label="Elapsed time">
+            <div class="flex h-[86px] items-start">
+              <div class="flex w-[166.667px] flex-col items-center gap-4">
+                <span
+                  id="hours"
+                  class="font-['Roboto_Mono',monospace] text-[56px] font-light leading-[56px] tracking-[-2px] text-[#edf3e8]">00</span>
+                <span class="text-[9px] font-medium uppercase tracking-[2px] text-[#9bad9e]">Hours</span>
+              </div>
+ 
+              <div class="flex h-14 w-5 justify-center whitespace-nowrap font-['Roboto_Mono',monospace] text-[40px] font-normal leading-[56px] text-[#5c7161]"
+                aria-hidden="true">:</div>
+ 
+              <div class="flex w-[166.667px] flex-col items-center gap-4"> <span id="minutes" class="font-['Roboto_Mono',monospace] text-[56px] font-light leading-[56px] tracking-[-2px] text-[#edf3e8]">00</span> <span class="text-[9px] font-medium uppercase tracking-[2px] text-[#9bad9e]">Minutes</span></div>
+ 
+              <div class="flex h-14 w-5 justify-center whitespace-nowrap font-['Roboto_Mono',monospace] text-[40px] font-normal leading-[56px] text-[#5c7161]" aria-hidden="true">:</div>
+ 
+              <div class="flex w-[166.667px] flex-col items-center gap-4">
+                <span
+                  id="seconds"
+                  class="font-['Roboto_Mono',monospace] text-[56px] font-light leading-[56px] tracking-[-2px] text-[#c5d9bd]">00</span>
+                <span class="text-[9px] font-medium uppercase tracking-[2px] text-[#9bad9e]">Seconds</span>
+              </div>
+            </div>
+          </div>
+ 
+          <div class="mt-8 grid grid-cols-[2fr_1fr_1fr] gap-3">
+            <button
+              id="start"
+              type="button"
+              class="h-12 cursor-pointer rounded-xl bg-[#b5cbb2] text-sm font-semibold text-[#102418] transition-colors hover:bg-[#c5d9bd] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#c5d9bd] disabled:cursor-not-allowed disabled:opacity-35 disabled:hover:bg-[#b5cbb2] motion-reduce:transition-none">Start</button>
 
-          <p class="w-[188px] h-[17px] font-normal text-sm text-[#A4B9AD] mb-[36px]">Make time for what matters.</p>
+            <button id="pause" type="button" disabled class="h-12 cursor-pointer rounded-xl border border-white/10 bg-white/5 text-sm font-medium text-[#dcece2] transition-colors hover:bg-white/10 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#c5d9bd] disabled:cursor-not-allowed disabled:opacity-35 disabled:hover:bg-white/5 motion-reduce:transition-none">Pause</button>
 
-          <!-- <div class="w-[540px] h-[1px] bg-[#B5CBB226] mb-[36px]"></div> -->
+            <button id="reset" type="button" disabled class="h-12 cursor-pointer rounded-xl border border-white/10 text-sm font-medium text-[#a4b9ad] transition-colors hover:bg-white/5 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#c5d9bd] disabled:cursor-not-allowed disabled:opacity-35 disabled:hover:bg-transparent motion-reduce:transition-none">Reset</button>
+          </div>
+ 
+          <p class="mt-5 h-4 text-center text-xs leading-4 text-[#8aa294]">A moment of focus. At your own pace.</p>
+
           
-          <div class="flex w-[540px] h-[158px] py-[36px] mb-[36px] border-t border-b border-[#B5CBB226]">
-            <div class="flex flex-col items-center w-[166.67px] h-[86px] gap-[16px]">
-              <div>00</div>
-              <div>HOURS</div>
-            </div>
-            <div class="w-[20px] h-[56px]">:</div>
-            <div class="flex flex-col items-center w-[166.67px] h-[86px] gap-[16px]">
-              <div>00</div>
-              <div>MINUTES</div>
-            </div>
-            <div class="w-[20px] h-[56px]">:</div>
-            <div class="flex flex-col items-center w-[166.67px] h-[86px] gap-[16px]">
-              <div>00</div>
-              <div>SECONDS</div>
-            </div>
-          </div>
-
-          <!-- <div class="w-[540px] h-[1px] bg-[#B5CBB226] mb-[32px]"></div> -->
-
-          <div>
-            <div>Start</div>
-            <div>Pause</div>
-            <div>Reset</div>
-          </div>
-
-          <p>A moment of focus. At your own pace.</p>
-
         </main>
       </div>
     </div>
