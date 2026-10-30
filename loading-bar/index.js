@@ -10,7 +10,6 @@ const renderProcess = (percent) => {
   number.textContent = Math.round(percent);
   loading.style.width = percent + "%";
 
-  //0-99%, last one100%
   const index = percent >= 100 ? messages.length - 1 : Math.floor((percent / 100) * (messages.length - 1));
   if (text.textContent !== messages[index]) {
     text.textContent = messages[index];

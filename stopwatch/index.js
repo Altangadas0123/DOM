@@ -1,70 +1,84 @@
-const hoursEl = document.getElementById("hours");
-const minutesEl = document.getElementById("minutes");
-const secondsEl = document.getElementById("seconds");
-const statusEl = document.getElementById("status");
 const startBtn = document.getElementById("start");
 const pauseBtn = document.getElementById("pause");
 const resetBtn = document.getElementById("reset");
+const displaySecunds = document.getElementById("seconds");
+const displayMinutes = document.getElementById("minutes");
+const displayHours = document.getElementById("hours");
+const state = document.getElementById("status");
 
-let elapsed = 0;
-let startedAt = 0;
-let timerId = null;
 
+let intervalId = "";
 
-
-const pad = (n) => String(n).padStart(2, "0");
-
-function currentElapsed() {
-  return timerId === null ? elapsed : elapsed + (performance.now() - startedAt);
-}
-
-function render() {
-  const total = Math.floor(currentElapsed() / 1000);
-  hoursEl.textContent = pad(Math.floor(total / 3600));
-  minutesEl.textContent = pad(Math.floor((total % 3600) / 60));
-  secondsEl.textContent = pad(total % 60);
-}
-
-function setState(state) {
-  const labels = { ready: "Ready", running: "Running", paused: "Paused" };
-  statusEl.textContent = labels[state];
-  startBtn.textContent = state === "paused" ? "Resume" : "Start";
-  startBtn.disabled = state === "running";
-  pauseBtn.disabled = state !== "running";
-  resetBtn.disabled = state === "ready";
-}
-
-function start() {
-  if (timerId !== null) return;
-  startedAt = performance.now();
-  timerId = setInterval(render, 200);
-  setState("running");
-}
-
-function pause() {
-  if (timerId === null) return;
-  elapsed = currentElapsed();
-  clearInterval(timerId);
-  timerId = null;
-  render();
-  setState("paused");
-}
-
-function reset() {
-  clearInterval(timerId);
-  timerId = null;
-  elapsed = 0;
-  render();
-  setState("ready");
-}
+let startTime = 0;
 
 
 
+// funstions
+
+// tsagiig haruulna. buh tootsoo end yvna
+const formatTime = (startTime) => {
+  const seconds = Math.floor(startTime % 60).toString().padStart(2, "0");
+  const minutes = Math.floor(startTime % 3600 / 60).toString().padStart(2, "0");
+  const hours = Math.floor(startTime / 3600).toString().padStart(2, "0");
+  
+  displaySecunds.textContent = seconds;
+  displayMinutes.textContent = minutes;
+  displayHours.textContent = hours;
+};
 
 
-startBtn.addEventListener("click", start);
-pauseBtn.addEventListener("click", pause);
-resetBtn.addEventListener("click", reset);
+// start button darhad
+const startTimer = () => {
+  intervalId = setInterval(() => {
+    startTime++;
 
-render();
-setState("ready");
+
+    formatTime(startTime);
+  }, 1000);
+  
+
+
+  startBtn.disabled = true;
+  pauseBtn.disabled = false;
+  resetBtn.disabled = false;
+  state.textContent = "Running";
+  
+};
+
+
+// pause button darhad
+const pauseTimer = () => {
+  clearInterval(intervalId);
+
+
+  startBtn.disabled = false;
+  pauseBtn.disabled = false;
+  state.textContent = "Paused";
+  startBtn.textContent = "Resume"
+};
+
+
+// reset button darhad
+const resetTimer = () => {
+  clearInterval(intervalId);
+
+  startTime = 0;
+  formatTime(startTime);
+
+  startBtn.disabled = false;
+  pauseBtn.disabled = true;
+  resetBtn.disabled = true;
+  state.textContent = "Ready";
+  startBtn.textContent = "Start"
+};
+
+
+
+
+
+// listeners
+
+startBtn.addEventListener("click", startTimer);
+pauseBtn.addEventListener("click", pauseTimer);
+resetBtn.addEventListener("click", resetTimer);
+
