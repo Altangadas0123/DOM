@@ -34,8 +34,15 @@ for(let i = 1; i <= 12; i++) {
 
   number.className = "absolute -translate-x-1/2 -translate-y-1/2";
 
-  number.style.left = `${50 + 38 * Math.sin(angle)}%`;
-  number.style.top = `${50 - 38 * Math.cos(angle)}%`;
+  // number.style.left = `${50 + 38 * Math.sin(angle)}%`;
+  // number.style.top = `${50 - 38 * Math.cos(angle)}%`;
+
+  // ================================================
+const RADIUS = 136.8;
+
+number.style.left = `calc(50% + ${RADIUS * Math.sin(angle)}px)`;
+number.style.top = `calc(50% + ${-RADIUS * Math.cos(angle)}px)`;
+  // ================================================
 
   numbers.appendChild(number);
 }
