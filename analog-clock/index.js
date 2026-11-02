@@ -18,9 +18,9 @@ for(let i = 0; i < 60; i++) {
   marker.style.transform = `rotate(${i * 6}deg)`;
 
   const tick = document.createElement("span");
-  const tickType = i % 5 === 0 ? "w-0 h-3 border-[2px] bg-[#657666]" : "w-[0.63px] h-[5.97px] border bg-[#C9CEC1]";
+  const tickType = i % 5 === 0 ? "w-0 h-3 border border-[#657666]" : "w-[0.63px] h-[5.97px] border-[0.5px] border-[#C9CEC1]";
 
-  tick.className = `absolute top-3 left-1/2 -translate-x-1/2 size-3 ${tickType}`;
+  tick.className = `absolute top-3 left-1/2 -translate-x-1/2 rounded-full ${tickType}`;
 
   marker.appendChild(tick);
   markers.appendChild(marker);
@@ -32,7 +32,7 @@ for(let i = 1; i <= 12; i++) {
   const angle = (i * Math.PI) / 6;
   console.log(angle);
 
-  number.className = "absolute -translate-x-1/2 -translate-y-1/2";
+  number.className = "absolute -translate-x-1/2 -translate-y-1/2 text-2xl leading-[none] font-['Noto_Serif',serif]";
 
   // number.style.left = `${50 + 38 * Math.sin(angle)}%`;
   // number.style.top = `${50 - 38 * Math.cos(angle)}%`;

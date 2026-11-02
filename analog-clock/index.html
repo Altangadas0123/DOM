@@ -7,6 +7,11 @@
     <title>Analog Clock · A moment in time</title>
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <script src="index.js" defer></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Noto+Serif:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+
   </head>
   <body class="relative isolate min-h-screen min-w-[1000px] bg-[#f5f3ee] font-sans text-[#253b35] antialiased selection:bg-[#dbe4d6]">
     <div class="pointer-events-none fixed inset-0 -z-10 bg-[radial-gradient(ellipse_at_50%_45%,#ffffff_0%,#f5f3ee_65%)]"></div>
@@ -30,15 +35,15 @@
         <!-- Endees ehel -->
         <div class="w-[392px] h-[439px] gap-[32px] flex flex-col">
 
-          <p class="flex justify-center font-semibold text-xs tracking-[3.5px] text-[#7B887C]">A MOMENT IN TIME</p>
+          <p class="flex justify-center font-semibold text-xs tracking-[3.5px] text-[#7B887C] font-inter">A MOMENT IN TIME</p>
 
           <div class="flex justify-center items-center w-[392px] h-[392px] rounded-[196px] bg-[#E9E7DF]">
             <div class="relative w-[360px] h-[360px] rounded-[180px] border border-[#D8DBD1] bg-[#FCFBF7]">
 
               <div id="markers" class="absolute inset-0"></div>
-              <div id="numbers" class="absolute inset-0 font-normal text-2xl text-[#253B35]"></div>
+              <div id="numbers" class="absolute inset-0 font-normal text-[#253B35]  "></div>
 
-              <div class="flex justify-center w-[42px] h-[11px] absolute top-[99.8px] left-[158px] font-semibold text-[9px] tracking-[3px] text-[#8F998A]">SWISS</div>
+              <div class="flex justify-center w-[42px] h-[11px] absolute top-[99.8px] left-[158px] font-semibold text-[9px] tracking-[3px] text-[#8F998A] font-inter">SWISS</div>
 
               <svg class="z-3 inset-0 absolute m-auto" width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
 <path d="M10 6C10 8.20914 8.20914 10 6 10C3.79086 10 2 8.20914 2 6C2 3.79086 3.79086 2 6 2C8.20914 2 10 3.79086 10 6Z" fill="#C47E57" stroke-width="4" stroke="#FCFBF7"/>
