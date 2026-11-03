@@ -33,6 +33,8 @@ const families = [
 
 let selectedFamilies = ["red", "amber", "emerald", "sky", "violet", "pink"].map((name) => families.find((family) => name === family.name));
 
+
+
 const hslToHex = ({ hue, saturation, lightness }) => {
   const l = lightness / 100;
   const s = saturation / 100;
@@ -49,13 +51,25 @@ const hslToHex = ({ hue, saturation, lightness }) => {
   return `#${channel(0)}${channel(8)}${channel(4)}`.toUpperCase();
 };
 
+
+
+colors.addEventListener("click", (event) => {
+  const button = event.target.closest("button[data-hex]");
+
+  if (!button) return;
+
+  navigator.clipboard.writeText(button.dataset.hex);
+});
+
 const renderColors = () => {
+  colors.innerHTML = '';
+
   selectedFamilies.forEach(({ name, hue, saturation}) => {
     const colorButtons = shades.map((shade, index) => {
       const hex = hslToHex({ hue, saturation, lightness: lightness[index] });
 
-      return `<button class="w-[113.2px] h-[107px] flex flex-col items-center">
-              <div style="background-color: ${hex}" class="w-[113.2px] h-[64px] rounded-xl"></div>
+      return `<button type="button" data-hex="${hex}" class="w-[113.2px] h-[107px] flex flex-col items-center">
+              <div style="background-color: ${hex}" class="w-[113.2px] h-[64px] rounded-xl hover:-translate-y-1"></div>
               <div class="w-[38px] h-[43px] flex flex-col items-center gap-[4px] pt-[8px] pb-[4px]">
                 <p class="w-[22px] h-[15px] font-medium text-xs text-[#D4D4D8]">${shade}</p>
                 <p class="w-[38px] h-[12px] font-normal text-[9px] text-[#A1A1AA] font-['Roboto_Mono',_monospace]">${hex}</p>
@@ -74,27 +88,28 @@ const renderColors = () => {
 
 </div>
     `;
-
     colors.innerHTML += template;
   });
 };
 
 
+shufflePalettes.addEventListener("click", ()=>{
+  const remaining = [...families];
+  selectedFamilies = [];
 
-// const hslToHex = (hue, saturation, light) => {
-//   const l = light / 100;
-//   const s = saturation / 100;
-//   const amplitude = s * Math.min(l, 1 - l);
+  for(let i = 0; i < 6; i++) {
+    const randomIndex = Math.floor(Math.random() * remaining.length);
+    selectedFamilies.push(remaining[randomIndex]);
 
-//   const channel = (offset) => {
-//     const position = (offset + hue / 30) % 12;
-//     const value = l - amplitude * Math.max(-1, Math.min(position - 3, 9 - position, 1));
-//     return Math.round(255 * value)
-//       .toString(16)
-//       .padStart(2, "0");
-//   };
+    remaining.splice(randomIndex, 1);
+  }
 
-//   return `#${channel(0)}${channel(8)}${channel(4)}`.toUpperCase();
-// };
+
+  statusElement.textContent = "6 palettes · 60 shades. Click to copy a HEX background color."
+  statusElement.className = "w-fit h-[15px] font-normal text-xs text-[#A1A1AA]";
+
+  renderColors();
+  })
+
 
 renderColors();
