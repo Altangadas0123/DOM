@@ -92,7 +92,7 @@ const renderColors = () => {
   });
 };
 
-
+ 
 shufflePalettes.addEventListener("click", ()=>{
   const remaining = [...families];
   selectedFamilies = [];
